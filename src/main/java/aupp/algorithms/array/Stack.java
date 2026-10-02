@@ -1,15 +1,13 @@
 package aupp.algorithms.array;
 
 
-import java.util.EmptyStackException;
 import java.util.Objects;
 
-// 1 2 3 4 5, top = 5, count = 5
-// pop(),
 public class Stack<T> {
     private int count;
     private T[] arr;
 
+    // Time Complexity: O(n) for initialization
     @SuppressWarnings("unchecked")
     public Stack(int arraySize) {
         if (arraySize < 0) throw new IllegalArgumentException("Initial size must be non-negative: " + arraySize);
@@ -19,6 +17,7 @@ public class Stack<T> {
         this.arr = (T[]) new Object[arraySize];
     }
 
+    // Time Complexity: O(1) amortized, O(n) worst case when resizing
     public void push(T newItem) {
         Objects.requireNonNull(newItem, "New item must not be null");
 
@@ -27,8 +26,9 @@ public class Stack<T> {
         arr[count++] = newItem;
     }
 
+    // Time Complexity: O(1) amortized, O(n) worst case when shrinking
     public T pop() {
-        if (count <= 0) throw new EmptyStackException();
+        if (count <= 0) return null;
 
         T removed = arr[--count];
         arr[count] = null;
@@ -38,13 +38,15 @@ public class Stack<T> {
         return removed;
     }
 
+    // Time Complexity: O(1), accessing the last element directly
     public T peek() {
-        if (count <= 0) throw new EmptyStackException();
+        if (count <= 0) return null;
 
         return arr[count - 1];
     }
 
 
+    // Time Complexity: O(n), looping through the stack to build a string representation
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Stack[");
@@ -57,6 +59,7 @@ public class Stack<T> {
         return sb.append("]").toString();
     }
 
+    // Time Complexity: O(n), looping through the stack to display elements
     public void display() {
         System.out.println("Top");
 
@@ -66,6 +69,7 @@ public class Stack<T> {
     }
 
 
+    // Time Complexity: O(n), creating a new array and copying elements
     @SuppressWarnings("unchecked")
     private void resize(int newSize) {
         if (newSize < 0) throw new IllegalArgumentException("New size must be positive integer");
@@ -78,14 +82,5 @@ public class Stack<T> {
 
         this.arr = newArr;
 
-    }
-
-    static void main() {
-        Stack<Integer> stack = new Stack<>(0);
-        stack.push(1);
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.toString());
-        stack.display();
     }
 }
