@@ -2,7 +2,9 @@ package aupp.algorithms.array;
 
 import java.util.Objects;
 
-public class StringReversal {
+public class StringReverser {
+
+    // Time Complexity: O(n) where n is the length of the input string
     public static String reverse(String input) {
         Objects.requireNonNull(input, "Input string must not be null");
 
@@ -17,12 +19,5 @@ public class StringReversal {
             sb.append(stack.pop());
         }
         return sb.toString();
-    }
-
-    public static void main() {
-        String input = "Hello, World!";
-        String reversed = reverse(input);
-        System.out.println("Original: " + input);
-        System.out.println("Reversed: " + reversed);
     }
 }
