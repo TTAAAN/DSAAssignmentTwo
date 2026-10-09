@@ -75,15 +75,6 @@ public class Queue<T> {
         return sb.append("]").toString();
     }
 
-    // Time Complexity: O(N) where N is the number of elements in the queue
-    public void display() {
-        System.out.println("Front");
-        for (int i = 0; i < count; i++) {
-            System.out.println("[" + arr[(head + i) % arr.length] + "]");
-        }
-        System.out.println("Rear");
-    }
-
     // Helper method for dynamic resizing
     // Time Complexity: O(N) where N is the number of copied elements
     @SuppressWarnings("unchecked")
@@ -98,4 +89,14 @@ public class Queue<T> {
         this.head = 0;
         this.tail = count;
     }
+
+    // Time Complexity: O(N) where N is the number of elements in the queue
+    public void display() {
+        System.out.println("Front");
+        for (int i = 0; i < count; i++) {
+            System.out.println("[" + arr[(head + i) % arr.length] + "]");
+        }
+        System.out.println("Rear");
+    }
+
 }
