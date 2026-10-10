@@ -65,34 +65,37 @@ public class PriorityQueue<T> {
     }
 
     public T peekFront() {
+        // Front (Head) = Highest priority item (next to be popped from the end)
         if (count <= 0) return null;
 
         return arr[count - 1].item();
     }
 
     public T peekRear() {
+        // Rear (Tail) = Lowest priority item (sitting at index 0)
         if (count <= 0) return null;
 
         return arr[0].item();
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("PriorityQueue[");
 
-        // Build from Front (highest priority) to Rear (lowest priority)
-        for (int i = 0; i < count; i++) {
-            if (i > 0) sb.append(", ");
+        // Iterate backwards from Front (highest priority at count - 1) to Rear (lowest priority at 0)
+        for (int i = count - 1; i >= 0; i--) {
+            if (i < count - 1) sb.append(", ");
             sb.append(arr[i].item()).append("(priority: ").append(arr[i].priorityValue()).append(")");
         }
         return sb.append("]").toString();
     }
 
     public void display() {
-        System.out.println("Front");
-        for (int i = 0; i < count; i++) {
+        System.out.println("Front (Highest Priority)");
+        for (int i = count - 1; i >= 0; i--) {
             System.out.println("[" + arr[i].item() + " (priority: " + arr[i].priorityValue() + ")]");
         }
-        System.out.println("Rear");
+        System.out.println("Rear (Lowest Priority)");
     }
 
 
@@ -109,14 +112,11 @@ public class PriorityQueue<T> {
         this.arr = newArr;
     }
 
-    static void main() {
+    public static void main(String[] args) {
         PriorityQueue<String> pq = new PriorityQueue<>(5);
         pq.insert("Task 1", 3);
         pq.insert("Task 2", 1);
         pq.insert("Task 3", 2);
-
-        System.out.println(pq); // Should print tasks in order of priority
-
 
     }
 }
