@@ -5,23 +5,7 @@ import java.util.Objects;
 
 public class PriorityQueue<T> {
 
-    private static class Item<T> {
-        private T item;
-        private int priorityValue;
-
-        public Item(T item, int priorityValue) {
-            this.item = item;
-            this.priorityValue = priorityValue;
-        }
-
-        public T getItem() {
-            return item;
-        }
-
-        public int getPriorityValue() {
-            return priorityValue;
-        }
-    }
+    private record Item<T>(T item, int priorityValue) {}
 
     private Item<T>[] arr;
     private int count;
@@ -42,7 +26,7 @@ public class PriorityQueue<T> {
         int right = count - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (arr[mid].getPriorityValue() < target.getPriorityValue()) {
+            if (arr[mid].priorityValue() < target.priorityValue()) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
@@ -77,19 +61,19 @@ public class PriorityQueue<T> {
             resize(arr.length / 2);
         }
 
-        return removedItem.getItem();
+        return removedItem.item();
     }
 
     public T peekFront() {
         if (count <= 0) return null;
 
-        return arr[count - 1].getItem();
+        return arr[count - 1].item();
     }
 
     public T peekRear() {
         if (count <= 0) return null;
 
-        return arr[0].getItem();
+        return arr[0].item();
     }
 
     public String toString() {
@@ -98,7 +82,7 @@ public class PriorityQueue<T> {
         // Build from Front (highest priority) to Rear (lowest priority)
         for (int i = 0; i < count; i++) {
             if (i > 0) sb.append(", ");
-            sb.append(arr[i].getItem()).append("(priority: ").append(arr[i].getPriorityValue()).append(")");
+            sb.append(arr[i].item()).append("(priority: ").append(arr[i].priorityValue()).append(")");
         }
         return sb.append("]").toString();
     }
@@ -106,7 +90,7 @@ public class PriorityQueue<T> {
     public void display() {
         System.out.println("Front");
         for (int i = 0; i < count; i++) {
-            System.out.println("[" + arr[i].getItem() + " (priority: " + arr[i].getPriorityValue() + ")]");
+            System.out.println("[" + arr[i].item() + " (priority: " + arr[i].priorityValue() + ")]");
         }
         System.out.println("Rear");
     }
