@@ -7,7 +7,7 @@ public class Stack<T> {
     private int count;
     private T[] arr;
 
-    // Time Complexity: O(n) for initialization
+    // Time Complexity: O(N) where N is arraySize for array allocation
     @SuppressWarnings("unchecked")
     public Stack(int arraySize) {
         if (arraySize < 0) throw new IllegalArgumentException("Initial size must be non-negative: " + arraySize);

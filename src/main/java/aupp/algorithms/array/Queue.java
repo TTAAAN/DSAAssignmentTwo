@@ -8,7 +8,7 @@ public class Queue<T> {
     private int head;
     private int tail;
 
-    // Time Complexity: O(1) [or O(N) where N is arraySize for array allocation]
+    // Time Complexity: O(N) where N is arraySize for array allocation
     @SuppressWarnings("unchecked")
     public Queue(int size) {
         if (size < 0) throw new IllegalArgumentException("Initial size must be non-negative: " + size);
