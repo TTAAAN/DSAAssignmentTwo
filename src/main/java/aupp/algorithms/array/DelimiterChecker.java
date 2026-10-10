@@ -5,7 +5,7 @@ import java.util.Objects;
 public class DelimiterChecker {
     // Time Complexity: O(n) where n is the length of the input string
     public static boolean check(String input) {
-        Objects.requireNonNull(input, "Input string must not be null");
+        if (input == null) return false;
 
         Stack<Character> stack = new Stack<>(input.length());
 
