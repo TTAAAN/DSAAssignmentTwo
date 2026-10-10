@@ -5,11 +5,13 @@ import java.util.Objects;
 
 public class PriorityQueue<T> {
 
-    private record Item<T>(T item, int priorityValue) {}
+    private record Item<T>(T item, int priorityValue) {
+    }
 
     private Item<T>[] arr;
     private int count;
 
+    // Time Complexity: O(N) where N is arraySize for array allocation
     @SuppressWarnings("unchecked")
     public PriorityQueue(int arraySize) {
         if (arraySize < 0) {
@@ -19,6 +21,7 @@ public class PriorityQueue<T> {
         this.count = 0;
     }
 
+    // Time Complexity: O(log N) for binary search
     private int findInsertionIndex(Item<T> target) {
         Objects.requireNonNull(target, "Target item must not be null");
 
@@ -35,6 +38,7 @@ public class PriorityQueue<T> {
         return left;
     }
 
+    // Time Complexity: O(N) for shifting elements and O(log N) for finding the insertion index, resulting in O(N) overall
     public void insert(T newItem, int priorityValue) {
         Objects.requireNonNull(newItem, "New item must not be null");
 
@@ -51,6 +55,7 @@ public class PriorityQueue<T> {
         count++;
     }
 
+    // Time Complexity: O(1) amortized, O(N) worst-case when shrinking
     public T remove() {
         if (count <= 0) return null;
 
@@ -64,6 +69,7 @@ public class PriorityQueue<T> {
         return removedItem.item();
     }
 
+    // Time Complexity: O(1)
     public T peekFront() {
         // Front (Head) = Highest priority item (next to be popped from the end)
         if (count <= 0) return null;
@@ -71,6 +77,7 @@ public class PriorityQueue<T> {
         return arr[count - 1].item();
     }
 
+    // Time Complexity: O(1)
     public T peekRear() {
         // Rear (Tail) = Lowest priority item (sitting at index 0)
         if (count <= 0) return null;
@@ -78,6 +85,7 @@ public class PriorityQueue<T> {
         return arr[0].item();
     }
 
+    // Time Complexity: O(N) where N is the number of elements in the queue
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("PriorityQueue[");
@@ -90,6 +98,7 @@ public class PriorityQueue<T> {
         return sb.append("]").toString();
     }
 
+    // Time Complexity: O(N) where N is the number of elements in the queue
     public void display() {
         System.out.println("Front (Highest Priority)");
         for (int i = count - 1; i >= 0; i--) {
@@ -99,6 +108,7 @@ public class PriorityQueue<T> {
     }
 
 
+    // Time Complexity: O(N) where N is the number of copied elements
     @SuppressWarnings("unchecked")
     private void resize(int newSize) {
         if (newSize < 0) throw new IllegalArgumentException("New size must be positive integer");
@@ -110,13 +120,5 @@ public class PriorityQueue<T> {
         }
 
         this.arr = newArr;
-    }
-
-    public static void main(String[] args) {
-        PriorityQueue<String> pq = new PriorityQueue<>(5);
-        pq.insert("Task 1", 3);
-        pq.insert("Task 2", 1);
-        pq.insert("Task 3", 2);
-
     }
 }
