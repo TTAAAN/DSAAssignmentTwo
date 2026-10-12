@@ -24,7 +24,7 @@ public class Queue<T> {
     public void insert(T newItem) {
         Objects.requireNonNull(newItem, "New item must not be null");
 
-        // Shrink the array if it's full. Accounted for the case when the array is empty (size 0) to avoid multiplying by 2.
+        // Expand the array if it's full. Accounted for the case when the array is empty (size 0) to avoid multiplying by 2.
         if (arr.length <= count) resize(arr.length == 0 ? 1 : arr.length * 2);
 
         arr[tail] = newItem;
