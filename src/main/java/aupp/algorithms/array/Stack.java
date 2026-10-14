@@ -33,7 +33,7 @@ public class Stack<T> {
         T removed = arr[--count];
         arr[count] = null;
 
-        if (arr.length > 1 && count <= arr.length / 4) resize(arr.length / 2);
+        if (count > 0 && count <= arr.length / 4) resize(arr.length / 2);
 
         return removed;
     }
