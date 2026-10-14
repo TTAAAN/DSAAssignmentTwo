@@ -1,7 +1,5 @@
 package aupp.algorithms.array;
 
-import java.util.Objects;
-
 public class DelimiterChecker {
     // Time Complexity: O(n) where n is the length of the input string
     public static boolean check(String input) {

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class PriorityQueue<T> {
 
-    private record Item<T>(T item, int priorityValue) {
+    private record Item<E>(E item, int priorityValue) {
     }
 
     private Item<T>[] arr;
