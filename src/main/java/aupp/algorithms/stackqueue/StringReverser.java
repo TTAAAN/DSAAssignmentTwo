@@ -1,4 +1,4 @@
-package aupp.algorithms.array;
+package aupp.algorithms.stackqueue;
 
 import java.util.Objects;
 

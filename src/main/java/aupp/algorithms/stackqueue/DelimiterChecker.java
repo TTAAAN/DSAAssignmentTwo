@@ -1,4 +1,4 @@
-package aupp.algorithms.array;
+package aupp.algorithms.stackqueue;
 
 public class DelimiterChecker {
     // Time Complexity: O(n) where n is the length of the input string

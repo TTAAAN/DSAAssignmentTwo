@@ -1,4 +1,4 @@
-package aupp.algorithms.array;
+package aupp.algorithms.stackqueue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
